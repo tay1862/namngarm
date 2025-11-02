@@ -29,7 +29,7 @@ export default async function AboutPage() {
         </p>
       </div>
 
-      <AboutForm initialData={aboutPage} />
+      <AboutForm initialData={aboutPage || undefined} />
     </div>
   );
 }
