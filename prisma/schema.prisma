@@ -443,6 +443,67 @@ model FAQCategory {
 }
 
 // ============================================
+// ABOUT PAGE
+// ============================================
+
+model AboutPage {
+  id            String    @id @default("about_page")
+  
+  title_lo      String    @default("ກ່ຽວກັບ NAMNGAM")
+  title_th      String    @default("เกี่ยวกับ NAMNGAM")
+  title_zh      String    @default("关于 NAMNGAM")
+  title_en      String    @default("About NAMNGAM")
+  
+  storyTitle_lo String    @default("ເລື່ອງລາວຂອງພວກເຮົາ")
+  storyTitle_th String    @default("เรื่องราวของเรา")
+  storyTitle_zh String    @default("我们的故事")
+  storyTitle_en String    @default("Our Story")
+  
+  storyParagraph1_lo String? @db.Text
+  storyParagraph1_th String? @db.Text
+  storyParagraph1_zh String? @db.Text
+  storyParagraph1_en String? @db.Text
+  
+  storyParagraph2_lo String? @db.Text
+  storyParagraph2_th String? @db.Text
+  storyParagraph2_zh String? @db.Text
+  storyParagraph2_en String? @db.Text
+  
+  values         AboutValue[]
+  
+  backgroundImage String?
+  
+  updatedAt     DateTime  @updatedAt
+  
+  @@map("about_page")
+}
+
+model AboutValue {
+  id            String    @id @default(cuid())
+  
+  aboutPageId   String    @default("about_page")
+  aboutPage     AboutPage @relation(fields: [aboutPageId], references: [id], onDelete: Cascade)
+  
+  icon          String?
+  title_lo      String
+  title_th      String
+  title_zh      String
+  title_en      String
+  
+  description_lo String?  @db.Text
+  description_th String?  @db.Text
+  description_zh String?  @db.Text
+  description_en String?  @db.Text
+  
+  order         Int       @default(0)
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  @@index([order])
+}
+
+// ============================================
 // MEDIA LIBRARY
 // ============================================
 

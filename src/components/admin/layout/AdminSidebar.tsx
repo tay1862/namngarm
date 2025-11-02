@@ -11,6 +11,7 @@ import {
   Settings,
   Image as ImageIcon,
   Users,
+  HelpCircle,
 } from 'lucide-react';
 
 const navigation = [
@@ -18,6 +19,8 @@ const navigation = [
   { name: 'Products', href: '/admin/products', icon: Package },
   { name: 'Articles', href: '/admin/articles', icon: FileText },
   { name: 'Categories', href: '/admin/categories', icon: FolderOpen },
+  { name: 'About Page', href: '/admin/about', icon: FileText },
+  { name: 'FAQs', href: '/admin/faqs', icon: HelpCircle },
   { name: 'Media', href: '/admin/media', icon: ImageIcon },
   { name: 'Settings', href: '/admin/settings', icon: Settings },
   { name: 'Users', href: '/admin/users', icon: Users },

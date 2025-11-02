@@ -5,10 +5,14 @@ const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'www.namngam.com', 'namngam.com'],
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
         hostname: '**',
       },
     ],
