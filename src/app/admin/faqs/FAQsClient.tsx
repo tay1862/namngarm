@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
+import FAQForm from './FAQForm';
 
 interface FAQ {
   id: string;
@@ -233,39 +234,29 @@ export default function FAQsClient() {
         </CardContent>
       </Card>
 
-      {/* Create/Edit Modal would go here */}
+      {/* Create Modal */}
       {isCreateModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <h3 className="text-lg font-semibold mb-4">Create New FAQ</h3>
-            <p className="text-neutral-600">FAQ form would go here...</p>
-            <div className="flex justify-end space-x-2 mt-6">
-              <Button
-                variant="outline"
-                onClick={() => setIsCreateModalOpen(false)}
-              >
-                Cancel
-              </Button>
-            </div>
-          </div>
-        </div>
+        <FAQForm
+          categories={categories}
+          onClose={() => setIsCreateModalOpen(false)}
+          onSave={() => {
+            setIsCreateModalOpen(false);
+            fetchFAQs();
+          }}
+        />
       )}
 
+      {/* Edit Modal */}
       {editingFaq && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <h3 className="text-lg font-semibold mb-4">Edit FAQ</h3>
-            <p className="text-neutral-600">FAQ edit form would go here...</p>
-            <div className="flex justify-end space-x-2 mt-6">
-              <Button
-                variant="outline"
-                onClick={() => setEditingFaq(null)}
-              >
-                Cancel
-              </Button>
-            </div>
-          </div>
-        </div>
+        <FAQForm
+          categories={categories}
+          faq={editingFaq}
+          onClose={() => setEditingFaq(null)}
+          onSave={() => {
+            setEditingFaq(null);
+            fetchFAQs();
+          }}
+        />
       )}
     </div>
   );
