@@ -43,7 +43,7 @@ interface AboutPageData {
 }
 
 interface AboutFormProps {
-  initialData?: AboutPageData & { values?: AboutValue[] };
+  initialData?: any; // Using any type to accept the actual Prisma type
 }
 
 const emptyValue: AboutValue = {
