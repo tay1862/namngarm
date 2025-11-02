@@ -129,6 +129,9 @@ export default function AboutForm({ initialData }: AboutFormProps) {
     setIsLoading(true);
 
     try {
+      // Log the form data for debugging
+      console.log('Submitting about page data:', JSON.stringify(formData, null, 2));
+      
       const response = await fetch('/api/about', {
         method: 'PUT',
         headers: {
@@ -138,6 +141,7 @@ export default function AboutForm({ initialData }: AboutFormProps) {
       });
 
       const result = await response.json();
+      console.log('API response:', result);
 
       if (result.success) {
         toast.success('About page updated successfully!');

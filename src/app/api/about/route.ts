@@ -97,6 +97,10 @@ export async function GET() {
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
+    
+    // Log the received data for debugging
+    console.log('Received about page update data:', JSON.stringify(body, null, 2));
+    
     const {
       title_lo,
       title_th,
@@ -164,28 +168,33 @@ export async function PUT(request: Request) {
 
     // Handle values (company values/principles)
     if (values && Array.isArray(values)) {
-      // Delete existing values
-      await prisma.aboutValue.deleteMany({
-        where: { aboutPageId: 'about_page' },
-      });
-
-      // Create new values
-      if (values.length > 0) {
-        await prisma.aboutValue.createMany({
-          data: values.map((value, index) => ({
-            aboutPageId: 'about_page',
-            icon: value.icon,
-            title_lo: value.title_lo,
-            title_th: value.title_th,
-            title_zh: value.title_zh,
-            title_en: value.title_en,
-            description_lo: value.description_lo,
-            description_th: value.description_th,
-            description_zh: value.description_zh,
-            description_en: value.description_en,
-            order: index,
-          })),
+      try {
+        // Delete existing values
+        await prisma.aboutValue.deleteMany({
+          where: { aboutPageId: 'about_page' },
         });
+
+        // Create new values
+        if (values.length > 0) {
+          await prisma.aboutValue.createMany({
+            data: values.map((value, index) => ({
+              aboutPageId: 'about_page',
+              icon: value.icon || '',
+              title_lo: value.title_lo || '',
+              title_th: value.title_th || '',
+              title_zh: value.title_zh || '',
+              title_en: value.title_en || '',
+              description_lo: value.description_lo || null,
+              description_th: value.description_th || null,
+              description_zh: value.description_zh || null,
+              description_en: value.description_en || null,
+              order: index,
+            })),
+          });
+        }
+      } catch (error) {
+        console.error('Error handling values:', error);
+        throw new Error(`Failed to update about page values: ${error instanceof Error ? error.message : 'Unknown error'}`);
       }
     }
 
@@ -206,7 +215,10 @@ export async function PUT(request: Request) {
   } catch (error) {
     console.error('Failed to update about page:', error);
     return NextResponse.json(
-      { success: false, error: 'Failed to update about page content' },
+      { 
+        success: false, 
+        error: `Failed to update about page content: ${error instanceof Error ? error.message : 'Unknown error'}` 
+      },
       { status: 500 }
     );
   }
