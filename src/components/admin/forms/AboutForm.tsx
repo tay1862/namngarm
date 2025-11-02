@@ -133,7 +133,7 @@ export default function AboutForm({ initialData }: AboutFormProps) {
       console.log('Submitting about page data:', JSON.stringify(formData, null, 2));
       
       const response = await fetch('/api/about', {
-        method: 'PUT',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },

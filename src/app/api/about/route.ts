@@ -97,8 +97,8 @@ export async function GET() {
   }
 }
 
-// PUT - Update about page content
-export async function PUT(request: NextRequest) {
+// POST - Update about page content
+export async function POST(request: NextRequest) {
   try {
     // Check authentication
     const session = await getServerSession(authOptions);
