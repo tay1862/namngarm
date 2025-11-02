@@ -140,6 +140,20 @@ export default function AboutForm({ initialData }: AboutFormProps) {
         body: JSON.stringify(formData),
       });
 
+      // Check if response is OK and has JSON content
+      if (!response.ok) {
+        console.error('API response not OK:', response.status, response.statusText);
+        toast.error(`Server error: ${response.status} ${response.statusText}`);
+        return;
+      }
+      
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        console.error('Response is not JSON:', await response.text());
+        toast.error('Server returned non-JSON response');
+        return;
+      }
+      
       const result = await response.json();
       console.log('API response:', result);
 

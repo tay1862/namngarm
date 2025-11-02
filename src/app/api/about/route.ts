@@ -169,28 +169,56 @@ export async function PUT(request: Request) {
     // Handle values (company values/principles)
     if (values && Array.isArray(values)) {
       try {
-        // Delete existing values
-        await prisma.aboutValue.deleteMany({
+        // Get existing values to determine what to delete
+        const existingValues = await prisma.aboutValue.findMany({
           where: { aboutPageId: 'about_page' },
         });
-
-        // Create new values
-        if (values.length > 0) {
-          await prisma.aboutValue.createMany({
-            data: values.map((value, index) => ({
-              aboutPageId: 'about_page',
-              icon: value.icon || '',
-              title_lo: value.title_lo || '',
-              title_th: value.title_th || '',
-              title_zh: value.title_zh || '',
-              title_en: value.title_en || '',
-              description_lo: value.description_lo || null,
-              description_th: value.description_th || null,
-              description_zh: value.description_zh || null,
-              description_en: value.description_en || null,
-              order: index,
-            })),
+        
+        // Extract existing IDs
+        const existingIds = existingValues.map(v => v.id);
+        const incomingIds = values.filter(v => v.id).map(v => v.id);
+        
+        // Delete values that are not in the incoming data
+        const idsToDelete = existingIds.filter(id => !incomingIds.includes(id));
+        if (idsToDelete.length > 0) {
+          await prisma.aboutValue.deleteMany({
+            where: { 
+              id: { in: idsToDelete }
+            },
           });
+        }
+        
+        // Update or create values
+        for (let i = 0; i < values.length; i++) {
+          const value = values[i];
+          const valueData = {
+            icon: value.icon || '',
+            title_lo: value.title_lo || '',
+            title_th: value.title_th || '',
+            title_zh: value.title_zh || '',
+            title_en: value.title_en || '',
+            description_lo: value.description_lo || null,
+            description_th: value.description_th || null,
+            description_zh: value.description_zh || null,
+            description_en: value.description_en || null,
+            order: i,
+          };
+          
+          if (value.id) {
+            // Update existing value
+            await prisma.aboutValue.update({
+              where: { id: value.id },
+              data: valueData,
+            });
+          } else {
+            // Create new value
+            await prisma.aboutValue.create({
+              data: {
+                ...valueData,
+                aboutPageId: 'about_page',
+              },
+            });
+          }
         }
       } catch (error) {
         console.error('Error handling values:', error);
