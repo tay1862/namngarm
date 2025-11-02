@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma';
 // GET about page content
 export async function GET() {
   try {
+    console.log('GET request received for /api/about');
+    
     const aboutPage = await prisma.aboutPage.findUnique({
       where: { id: 'about_page' },
       include: {
@@ -96,6 +98,8 @@ export async function GET() {
 // PUT - Update about page content
 export async function PUT(request: Request) {
   try {
+    console.log('PUT request received for /api/about');
+    
     const body = await request.json();
     
     // Log the received data for debugging
