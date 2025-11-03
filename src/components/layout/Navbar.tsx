@@ -21,7 +21,6 @@ export default function Navbar() {
     { name: t('about'), href: `/${locale}/about` },
     { name: t('products'), href: `/${locale}/products` },
     { name: t('articles'), href: `/${locale}/articles` },
-    { name: 'FAQ', href: `/${locale}/faq` },
     { name: t('tags'), href: `/${locale}/tags` },
     { name: t('contact'), href: `/${locale}/contact` },
   ];

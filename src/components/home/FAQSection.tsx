@@ -30,9 +30,9 @@ export default function FAQSection({ locale }: FAQSectionProps) {
           const data = await response.json();
           const transformedFAQs = data.map((faq: any) => ({
             id: faq.id,
-            question: faq.question,
-            answer: faq.answer,
-            category: faq.category?.name || (locale === 'th' ? 'ทั่วไป' : locale === 'lo' ? 'ທົ່ວໄປ' : 'General')
+            question: faq[`question_${locale}`] || faq.question_en,
+            answer: faq[`answer_${locale}`] || faq.answer_en,
+            category: faq.category?.[`name_${locale}`] || faq.category?.name_en || (locale === 'th' ? 'ทั่วไป' : locale === 'lo' ? 'ທົ່ວໄປ' : 'General')
           }));
           setFaqs(transformedFAQs);
         }
