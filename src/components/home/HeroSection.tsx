@@ -7,6 +7,7 @@ import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function HeroSection() {
   const t = useTranslations();
@@ -44,12 +45,19 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
       {homeBg && (
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${homeBg})` }}
-        >
-          <div className="absolute inset-0 bg-black/40"></div>
-        </div>
+        <>
+          <div className="absolute inset-0">
+            <Image
+              src={homeBg}
+              alt="Background"
+              fill
+              priority
+              className="object-cover"
+              style={{ filter: 'brightness(0.6)' }}
+            />
+            <div className="absolute inset-0 bg-black/40"></div>
+          </div>
+        </>
       )}
       
       {/* Fallback gradient background */}
