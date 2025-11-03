@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import HeroSection from '@/components/home/HeroSection';
-import AboutSection from '@/components/home/AboutSection';
+import AboutContent from '@/components/AboutContent';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import LatestArticles from '@/components/home/LatestArticles';
 import FAQSection from '@/components/home/FAQSection';
@@ -19,7 +19,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   return (
     <div>
       <HeroSection />
-      <AboutSection />
+      <AboutContent />
       <FeaturedProducts />
       <LatestArticles />
       <FAQSection locale={params.locale} />
