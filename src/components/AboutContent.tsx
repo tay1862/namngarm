@@ -50,7 +50,7 @@ interface AboutPageData {
 }
 
 interface AboutContentProps {
-  locale: string;
+  locale?: string;
 }
 
 export default function AboutContent({ locale }: AboutContentProps) {
