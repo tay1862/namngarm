@@ -38,6 +38,15 @@ interface AboutPageData {
   backgroundImage?: string;
   values?: AboutValue[];
   updatedAt: string;
+  // Add optional fields that might come from database
+  aboutPageId?: string;
+  createdAt?: string;
+  heroBadgeImage?: string;
+  heroBadgeText_lo?: string;
+  heroBadgeText_th?: string;
+  heroBadgeText_zh?: string;
+  heroBadgeText_en?: string;
+  heroDesignImage?: string;
 }
 
 interface AboutContentProps {
