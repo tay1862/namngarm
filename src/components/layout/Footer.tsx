@@ -55,7 +55,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-br from-pink-50 via-pink-100 to-pink-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 text-gray-700 dark:text-gray-200 relative overflow-hidden">
+    <footer className="bg-[#faa8ac] dark:bg-gray-950 text-white dark:text-gray-200 relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-pink-300 rounded-full filter blur-3xl"></div>
@@ -76,23 +76,23 @@ export default function Footer() {
                   className="object-contain drop-shadow-md"
                 />
               </div>
-              <span className="text-lg font-heading font-bold bg-gradient-to-r from-pink-600 to-rose-600 dark:from-pink-400 dark:to-rose-400 bg-clip-text text-transparent">
+              <span className="text-lg font-heading font-bold text-white">
                 {settings?.[`siteName_${locale}` as keyof typeof settings] || 'NAMNGAM'}
               </span>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            <p className="text-white/90 dark:text-gray-400 text-sm leading-relaxed">
               {t('home.hero.subtitle')}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-pink-600 dark:text-pink-400">{tNav('home')}</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-white dark:text-pink-400">{tNav('home')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href={`/${locale}`}
-                  className="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors duration-300 text-sm"
+                  className="text-white/90 dark:text-gray-400 hover:text-white dark:hover:text-pink-400 transition-colors duration-300 text-sm"
                 >
                   {tNav('home')}
                 </Link>
@@ -134,17 +134,17 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-pink-600 dark:text-pink-400">{tContact('getInTouch')}</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-white dark:text-pink-400">{tContact('getInTouch')}</h3>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2 text-gray-400 text-sm group">
-                <Phone size={16} className="text-pink-400 group-hover:text-pink-300 transition-colors" />
-                <span className="group-hover:text-pink-300 transition-colors">
+              <li className="flex items-center gap-2 text-white/90 text-sm group">
+                <Phone size={16} className="text-white group-hover:text-white transition-colors" />
+                <span className="group-hover:text-white transition-colors">
                   {settings?.phone || '+856 20 xxxxxxxx'}
                 </span>
               </li>
-              <li className="flex items-center gap-2 text-gray-400 text-sm group">
-                <Mail size={16} className="text-pink-400 group-hover:text-pink-300 transition-colors" />
-                <span className="group-hover:text-pink-300 transition-colors">
+              <li className="flex items-center gap-2 text-white/90 text-sm group">
+                <Mail size={16} className="text-white group-hover:text-white transition-colors" />
+                <span className="group-hover:text-white transition-colors">
                   {settings?.email || 'info@namngam.com'}
                 </span>
               </li>
@@ -153,7 +153,7 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-pink-600 dark:text-pink-400">{tFooter('socialMedia')}</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-white dark:text-pink-400">{tFooter('socialMedia')}</h3>
             <div className="flex gap-3">
               {settings?.facebookPage && (
                 <a
@@ -202,11 +202,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-pink-200 dark:border-pink-800 mt-8 pt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+        <div className="border-t border-white/20 dark:border-pink-800 mt-8 pt-8 text-center text-sm text-white/80 dark:text-gray-400">
           <p className="flex items-center justify-center gap-2">
-            <span className="text-pink-500 dark:text-pink-400">©</span>
+            <span className="text-white dark:text-pink-400">©</span>
             <span>{currentYear}</span>
-            <span className="bg-gradient-to-r from-pink-600 to-rose-600 dark:from-pink-400 dark:to-rose-400 bg-clip-text text-transparent font-semibold">NAMNGAM </span>
+            <span className="text-white font-bold dark:from-pink-400 dark:to-rose-400 dark:bg-clip-text dark:text-transparent">NAMNGAM </span>
             <span>.</span>
             <span>{tFooter('allRightsReserved')}.</span>
           </p>

@@ -52,7 +52,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="bg-white/80 dark:bg-gray-950 backdrop-blur-lg border-b border-pink-200 dark:border-gray-800 sticky top-0 z-40"
+      className="bg-[#faa8ac] dark:bg-gray-950 backdrop-blur-lg border-b border-pink-200 dark:border-gray-800 sticky top-0 z-40"
       role={ariaRoles.NAVIGATION}
       aria-label="Main navigation"
     >
@@ -74,7 +74,7 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <span className="text-2xl md:text-3xl font-heading font-semibold gradient-text group-hover:scale-105 transition-transform duration-300">
+            <span className="text-2xl md:text-3xl font-heading font-semibold text-white group-hover:scale-105 transition-transform duration-300">
               {settings?.[`siteName_${locale}` as keyof typeof settings] || 'NAMNGAM'}
             </span>
           </Link>
@@ -86,13 +86,13 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={`text-base font-medium transition-all duration-300 relative group ${pathname === item.href
-                  ? 'text-pink-600 dark:text-pink-400'
-                  : 'text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400'
+                  ? 'text-white font-bold'
+                  : 'text-white/90 hover:text-white'
                   }`}
                 aria-current={pathname === item.href ? 'page' : undefined}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-pink-400 transform transition-transform duration-300 ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`} aria-hidden="true" />
               </Link>
             ))}
@@ -113,7 +113,7 @@ export default function Navbar() {
             type="button"
           >
             <span className="sr-only">{isOpen ? 'Close menu' : 'Open menu'}</span>
-            {isOpen ? <X size={24} className="text-pink-600 dark:text-pink-400" /> : <Menu size={24} className="text-gray-700 dark:text-gray-300" />}
+            {isOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
           </button>
         </div>
 
