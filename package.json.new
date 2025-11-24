@@ -1,0 +1,16 @@
+{
+  "name": "namngam-original",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:seed": "node scripts/seed-complete.js",
+    "create-admin": "node scripts/create-admin.js"
+  }
+}
