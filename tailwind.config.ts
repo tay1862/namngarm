@@ -12,17 +12,17 @@ const config: Config = {
       colors: {
         // Peachy Pink Palette - Main Brand Colors
         pink: {
-          50: '#FFF5F6',   // Lightest - backgrounds
-          100: '#FFE8EB',  // Light - cards, sections
-          200: '#FFD1D7',  // Soft - borders, dividers
-          300: '#FFB3BA',  // ★ MAIN BRAND (logo background)
-          400: '#FF9AA3',  // Medium - hover states
-          500: '#FF818C',  // Strong - CTAs
-          600: '#FF6875',  // Deep - active states
-          700: '#FF4F5E',  // Rich - emphasis
-          800: '#E63947',  // Dark - text on light
-          900: '#CC2330',  // Darker - strong contrast
-          950: '#991A24',  // Darkest - dark mode
+          50: '#FFF0F1',   // Lightest
+          100: '#FFE0E3',  // Light
+          200: '#FFC2C7',  // Soft
+          300: '#FAA8AC',  // ★ MAIN BRAND (Updated to #faa8ac)
+          400: '#F5858C',  // Medium
+          500: '#EB5E68',  // Strong
+          600: '#D63D4A',  // Deep
+          700: '#B52B37',  // Rich
+          800: '#94242E',  // Dark
+          900: '#7A222A',  // Darker
+          950: '#420D12',  // Darkest
         },
         rose: {
           50: '#FFF5F6',
@@ -63,9 +63,9 @@ const config: Config = {
         gold: '#FFD4A3',
         // Primary (for compatibility)
         primary: {
-          DEFAULT: '#FFB3BA',
-          light: '#FFF5F6',
-          dark: '#FF6875',
+          DEFAULT: '#FAA8AC',
+          light: '#FFF0F1',
+          dark: '#EB5E68',
         },
         // Neutral Palette
         neutral: {

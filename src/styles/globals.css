@@ -16,9 +16,9 @@
     --font-lao: 'Noto Sans Lao', 'Phetsarath', 'Saysettha OT', 'DokChampa', sans-serif;
 
     /* Peachy Pink Theme - Light Mode */
-    --color-primary: #FFB3BA;
-    --color-primary-hover: #FF9AA3;
-    --color-primary-light: #FFF5F6;
+    --color-primary: #FAA8AC;
+    --color-primary-hover: #F5858C;
+    --color-primary-light: #FFF0F1;
     --color-secondary: #FFFBF8;
     --color-background: #FFFBF8;
     --color-surface: #FFFFFF;
@@ -30,9 +30,9 @@
 
   .dark {
     /* Peachy Pink Theme - Dark Mode */
-    --color-primary: #FFB3BA;
-    --color-primary-hover: #FFD1D7;
-    --color-primary-light: #991A24;
+    --color-primary: #FAA8AC;
+    --color-primary-hover: #FFC2C7;
+    --color-primary-light: #94242E;
     --color-secondary: #1F1F1F;
     --color-background: #0F0F0F;
     --color-surface: #1F1F1F;
