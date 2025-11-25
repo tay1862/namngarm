@@ -43,6 +43,7 @@ export default function ProductDetailClient({ product, translations }: ProductDe
     const [activeTab, setActiveTab] = useState<'description' | 'benefits' | 'howToUse'>('description');
     const [quantity, setQuantity] = useState(1);
     const [isWishlisted, setIsWishlisted] = useState(false);
+    const [selectedImage, setSelectedImage] = useState<string>(product.featuredImage || '');
 
     const { settings } = useSettings();
 
@@ -80,6 +81,12 @@ export default function ProductDetailClient({ product, translations }: ProductDe
         minimumFractionDigits: 0
     }).format(Number(product.price));
 
+    // Prepare gallery images (featured + additional images)
+    const galleryImages = [
+        product.featuredImage,
+        ...(product.images?.map((img: any) => img.url) || [])
+    ].filter(Boolean);
+
     return (
         <div className="bg-white dark:bg-gray-900 min-h-screen pb-20">
             <div className="container-custom pt-32 pb-16">
@@ -93,9 +100,9 @@ export default function ProductDetailClient({ product, translations }: ProductDe
                         className="space-y-6"
                     >
                         <div className="relative aspect-square rounded-3xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-2xl">
-                            {product.featuredImage ? (
+                            {selectedImage ? (
                                 <Image
-                                    src={product.featuredImage}
+                                    src={selectedImage}
                                     alt={name}
                                     fill
                                     className="object-cover"
@@ -113,12 +120,29 @@ export default function ProductDetailClient({ product, translations }: ProductDe
                             </div>
                         </div>
 
-                        {/* Thumbnails (Placeholder for now) */}
-                        <div className="grid grid-cols-4 gap-4">
-                            {[1, 2, 3, 4].map((_, i) => (
-                                <div key={i} className="aspect-square rounded-xl bg-gray-100 dark:bg-gray-800 cursor-pointer hover:ring-2 ring-primary transition-all"></div>
-                            ))}
-                        </div>
+                        {/* Thumbnails - Show actual gallery images */}
+                        {galleryImages.length > 1 && (
+                            <div className="grid grid-cols-4 gap-4">
+                                {galleryImages.slice(0, 4).map((img, i) => (
+                                    <div
+                                        key={i}
+                                        onClick={() => setSelectedImage(img)}
+                                        className={`aspect-square rounded-xl overflow-hidden cursor-pointer transition-all ${selectedImage === img
+                                                ? 'ring-2 ring-primary ring-offset-2'
+                                                : 'hover:ring-2 hover:ring-gray-300'
+                                            }`}
+                                    >
+                                        <Image
+                                            src={img}
+                                            alt={`${name} - Image ${i + 1}`}
+                                            width={200}
+                                            height={200}
+                                            className="object-cover w-full h-full"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </motion.div>
 
                     {/* Right Column: Info */}

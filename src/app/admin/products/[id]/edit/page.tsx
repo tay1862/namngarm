@@ -28,6 +28,10 @@ export default function EditProductPage() {
             description_lo: data.data.description_lo || '',
 
             description_en: data.data.description_en || '',
+            benefits_lo: data.data.benefits_lo || [],
+            benefits_en: data.data.benefits_en || [],
+            howToUse_lo: data.data.howToUse_lo || [],
+            howToUse_en: data.data.howToUse_en || [],
             categoryId: data.data.categoryId,
             price: data.data.price?.toString() || '',
             currency: data.data.currency || 'LAK',
