@@ -33,7 +33,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
         </h1>
 
         <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-          We're experiencing some technical difficulties. Please try again in a few moments.
+          We&apos;re experiencing some technical difficulties. Please try again in a few moments.
         </p>
 
         {/* Error Details (Development Only) */}

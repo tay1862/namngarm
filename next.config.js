@@ -9,14 +9,6 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'www.namngam.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'namngam.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'cdn.namngam.com',
       },
       {
