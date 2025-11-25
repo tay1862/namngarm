@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 
     // Rate limiting for uploads
     const clientIP = getClientIP(request);
-    const rateLimitResult = await rateLimit(`upload:${clientIP}`, 10); // 10 uploads per window
+    const rateLimitResult = await rateLimit(`upload:${clientIP}`, 50); // 50 uploads per window
 
     if (!rateLimitResult.success) {
       throw new ValidationError('Too many upload attempts. Please try again later.');
