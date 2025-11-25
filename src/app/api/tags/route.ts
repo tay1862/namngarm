@@ -63,11 +63,14 @@ export async function GET(request: NextRequest) {
 }
 
 // POST - Create new tag
-export async function POST(request: NextRequest) { try {
+// POST - Create new tag
+export async function POST(request: NextRequest) {
+  try {
     const body = await request.json();
     const { name_lo, name_en } = body;
 
     // Validate required fields
+    if (!name_lo || !name_en) {
       return NextResponse.json(
         { success: false, error: 'All language names are required' },
         { status: 400 }
@@ -84,8 +87,6 @@ export async function POST(request: NextRequest) { try {
       where: {
         OR: [
           { name_lo },
-          {  },
-          {  },
           { name_en },
           { slug }
         ]
@@ -100,8 +101,12 @@ export async function POST(request: NextRequest) { try {
     }
 
     // Create tag
-    const tag = await prisma.tag.create({ data: {
-        name_lo, name_en, slug }
+    const tag = await prisma.tag.create({
+      data: {
+        name_lo,
+        name_en,
+        slug
+      }
     });
 
     return NextResponse.json({
