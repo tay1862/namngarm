@@ -48,7 +48,8 @@ interface Article {
     tagId: string;
     tag: {
       id: string;
-      name: string;
+      name_lo: string;
+      name_en: string;
       slug: string;
     };
   }>;
@@ -92,7 +93,7 @@ export default function ArticlePage() {
 
   const handleShare = (platform: string) => {
     const url = window.location.href;
-    const title = article?.[`title_${locale}` as keyof typeof article] as string;
+    const title = (article as any)?.[`title_${locale}`] as string;
 
     let shareUrl = '';
     switch (platform) {
@@ -153,9 +154,9 @@ export default function ArticlePage() {
     );
   }
 
-  const articleTitle = article[`title_${locale}` as keyof typeof article] as string;
-  const articleExcerpt = article[`excerpt_${locale}` as keyof typeof article] as string;
-  const articleContent = article[`content_${locale}` as keyof typeof article] as string;
+  const articleTitle = (article as any)[`title_${locale}`] as string;
+  const articleExcerpt = (article as any)[`excerpt_${locale}`] as string;
+  const articleContent = (article as any)[`content_${locale}`] as string;
 
   const breadcrumbs = [
     { name: t('nav.home'), url: `/${locale}` },
@@ -290,7 +291,7 @@ export default function ArticlePage() {
                   href={`/${locale}/tags/${tag.slug}`}
                   className="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm font-medium hover:bg-pink-200 transition-colors"
                 >
-                  {tag[`name_${locale}` as keyof typeof tag] || tag.name}
+                  {(tag as any)[`name_${locale}`] || tag.name_en}
                 </Link>
               ))}
             </div>

@@ -18,9 +18,9 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
   // Get localized content
   const locale = params.locale as 'lo' | 'en' | 'th' | 'zh';
-  const heroTitle = settings?.[`heroTitle_${locale}`] || t('hero.title');
-  const heroSubtitle = settings?.[`heroSubtitle_${locale}`] || t('hero.subtitle');
-  const heroWelcome = settings?.[`heroWelcome_${locale}`] || t('hero.welcome');
+  const heroTitle = (settings as any)?.[`heroTitle_${locale}`] || t('hero.title');
+  const heroSubtitle = (settings as any)?.[`heroSubtitle_${locale}`] || t('hero.subtitle');
+  const heroWelcome = (settings as any)?.[`heroWelcome_${locale}`] || t('hero.welcome');
   const homeBg = settings?.homeBg || undefined;
   const heroDesignImage = settings?.heroDesignImage || undefined;
 

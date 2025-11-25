@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!product) return {};
 
     const locale = params.locale as 'lo' | 'th' | 'zh' | 'en';
-    const title = product[`metaTitle_${locale}`] || product[`name_${locale}`] || product.name_en;
-    const description = product[`metaDesc_${locale}`] || product[`description_${locale}`] || product.description_en;
+    const title = (product as any)[`metaTitle_${locale}`] || (product as any)[`name_${locale}`] || product.name_en;
+    const description = (product as any)[`metaDesc_${locale}`] || (product as any)[`description_${locale}`] || product.description_en;
 
     return {
         title: `${title} | NAMNGAM`,

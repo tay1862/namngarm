@@ -31,9 +31,9 @@ export default function HeroSection() {
         const data = await res.json();
         if (data.success) {
           setHomeBg(data.data.homeBg ? addCacheBusting(data.data.homeBg) : '');
-          setHeroWelcome(data.data[`heroWelcome_${locale}`] || tHome('welcome'));
-          setHeroTitle(data.data[`heroTitle_${locale}`] || tHome('hero.title'));
-          setHeroSubtitle(data.data[`heroSubtitle_${locale}`] || tHome('hero.subtitle'));
+          setHeroWelcome((data.data as any)[`heroWelcome_${locale}`] || tHome('welcome'));
+          setHeroTitle((data.data as any)[`heroTitle_${locale}`] || tHome('hero.title'));
+          setHeroSubtitle((data.data as any)[`heroSubtitle_${locale}`] || tHome('hero.subtitle'));
           setHeroDesignImage(data.data.heroDesignImage ? addCacheBusting(data.data.heroDesignImage) : '');
           setLogo(data.data.logo ? addCacheBusting(data.data.logo) : '');
         }
