@@ -1,4 +1,4 @@
-FROM node:18-slim AS base
+FROM node:18-bullseye-slim AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -36,7 +36,7 @@ FROM base AS runner
 WORKDIR /app
 
 # Install OpenSSL 1.1 for Prisma
-RUN apt-get update && apt-get install -y openssl libssl1.1 ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y openssl ca-certificates && rm -rf /var/lib/apt/lists/*
 
 ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
